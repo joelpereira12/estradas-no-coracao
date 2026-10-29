@@ -96,6 +96,8 @@ h2,h3{text-wrap:balance;font-family:var(--f-display)}
 .brand small{display:block;font-weight:500;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;opacity:.75;margin-top:3px}
 .topbar.solid .brand{opacity:1;transform:none}
 .topbar .btn{padding:.8em 1.25em;font-size:var(--s-xs);animation:none}
+.topbar .btn{white-space:nowrap}
+@media (max-width:350px){.topbar .wrap{gap:8px}.topbar .btn{padding:.7em .85em;font-size:.68rem}.topbar .brand small,.topbar .brand span{white-space:nowrap;font-size:.5rem;letter-spacing:.12em}}
 
 /* ================= HERO ================= */
 .hero{position:relative;height:300vh;background:var(--ink)}
@@ -295,6 +297,10 @@ p,li,blockquote{text-wrap:pretty}
 .seg b{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,var(--red-hi),var(--red));opacity:0;transition:opacity .35s;z-index:0}
 .seg span{position:relative;z-index:1}
 .seg .sm{display:none}
+.seg.ch{padding:.62em 0;width:2.3em;text-align:center;letter-spacing:0}
+@media (max-width:560px){.seg.ch{width:1.9em;padding:.6em 0;font-size:.66rem}.controls{gap:6px;max-width:100%;padding-inline:12px}.controls .nav-btn{width:38px;height:38px;flex:none}.rt-foot{max-width:100vw;overflow:hidden}}
+@media (max-width:360px){.controls .nav-btn{display:none}.seg.ch{width:2em}}
+.track{flex-wrap:nowrap}
 .seg.on{color:var(--white)}
 .seg.on b{opacity:1}
 .rt-hint{display:flex;align-items:center;gap:14px;font-family:var(--f-display);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
@@ -532,7 +538,7 @@ footer.site .wrap{padding-block:56px calc(40px + env(safe-area-inset-bottom,0px)
     <!-- AS PERGUNTAS -->
     <section class="pergunta" data-trail>
       <div class="wrap">
-        <h2 class="rv">Todos nós, ainda que inconscientemente, um dia nos questionaremos sobre <span>o propósito para o qual fomos criados.</span></h2>
+        <h2 class="rv">Todos nós, ainda que inconscientemente, um dia nos questionaremos sobre <span>qual é o propósito para o qual fomos criados.</span></h2>
         <div class="side rv">
           <div class="asks" role="tablist" aria-label="Perguntas que o livro responde"><i class="ind" aria-hidden="true"></i>
             <button type="button" role="tab" id="t1" aria-controls="a1" aria-selected="true">Para onde eu vou?</button>
@@ -590,9 +596,16 @@ footer.site .wrap{padding-block:56px calc(40px + env(safe-area-inset-bottom,0px)
             <div class="controls">
               <button class="nav-btn" id="bkPrev" type="button" aria-label="Página anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
               <div class="track">
-                <button class="seg" type="button" data-to="1"><i></i><b></b><span class="lg">Por dentro</span><span class="sm">I</span></button>
-                <button class="seg" type="button" data-to="5"><i></i><b></b><span class="lg">Pelo caminho</span><span class="sm">II</span></button>
-                <button class="seg" type="button" data-to="10"><i></i><b></b><span class="lg">Até o fim da estrada</span><span class="sm">III</span></button>
+                <button class="seg ch" type="button" data-to="1" aria-label="Capítulo 1"><i></i><b></b><span>1</span></button>
+                <button class="seg ch" type="button" data-to="2" aria-label="Capítulo 2"><i></i><b></b><span>2</span></button>
+                <button class="seg ch" type="button" data-to="3" aria-label="Capítulo 3"><i></i><b></b><span>3</span></button>
+                <button class="seg ch" type="button" data-to="4" aria-label="Capítulo 4"><i></i><b></b><span>4</span></button>
+                <button class="seg ch" type="button" data-to="5" aria-label="Capítulo 5"><i></i><b></b><span>5</span></button>
+                <button class="seg ch" type="button" data-to="6" aria-label="Capítulo 6"><i></i><b></b><span>6</span></button>
+                <button class="seg ch" type="button" data-to="7" aria-label="Capítulo 7"><i></i><b></b><span>7</span></button>
+                <button class="seg ch" type="button" data-to="8" aria-label="Capítulo 8"><i></i><b></b><span>8</span></button>
+                <button class="seg ch" type="button" data-to="9" aria-label="Capítulo 9"><i></i><b></b><span>9</span></button>
+                <button class="seg ch" type="button" data-to="10" aria-label="Capítulo 10"><i></i><b></b><span>10</span></button>
               </div>
               <button class="nav-btn" id="bkNext" type="button" aria-label="Próxima página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
             </div>
@@ -869,7 +882,6 @@ const PHASE = (() => { const n = Date.now(); return n < Date.parse(CONFIG.presal
     { n: 9, t: 'Momento decisivo', p: 223, kind: 'pull', s: 'O instante que divide a vida em antes e depois.' },
     { n: 10, t: 'Os sinais seguem', p: 250, kind: 'flow', note: 'o primeiro passo', s: 'Molhe os pés e o rio se abre.' },
   ];
-  const PARTS = [[1, 'Por dentro', 'O coração refeito do zero, a ruptura e um novo olhar sobre o caminho de sempre.', 'Capítulos 1–3'], [2, 'Pelo caminho', 'Começar com o que se tem, atravessar as estações e aprender a conduzir quem vem junto.', 'Capítulos 4–7'], [3, 'Até o fim da estrada', 'Voltar à fonte, encarar o momento decisivo e caminhar enquanto os sinais seguem.', 'Capítulos 8–10']];
   // rabiscos de escrita: linhas manuscritas geradas uma vez e guardadas como classes CSS
   function rng(seed){ let x = seed * 9301 + 49297; return () => { x = (x * 9301 + 49297) % 233280; return x / 233280; }; }
   function scribble(seed, full){
@@ -908,21 +920,17 @@ const PHASE = (() => { const n = Date.now(); return n < Date.parse(CONFIG.presal
   const flowS = c => { const e = EX[c.n]; return `<div class="pp fl"><p class="er" style="padding:0;margin:0 0 2%">Capítulo ${c.n}</p><p class="ts">${c.t}</p><p class="bx"><mark class="hl">${e.sent}</mark> ${e.post}</p><span class="mnote">${c.note}</span>${scr(c.n + 2)}<p class="pn">${c.p + 1}</p></div>`; };
   const pullR = c => { const e = EX[c.n]; return `<div class="pp r pq">${rh('', c.t)}<p class="bx sm">${e.pre}</p><blockquote class="big">${e.sent}</blockquote><p class="bx sm">${e.post}</p><p class="pn">${c.p + 2}</p></div>`; };
   const pullS = c => { const e = EX[c.n]; return `<div class="pp pq"><p class="er" style="padding:0;margin:0 0 2%">Capítulo ${c.n}</p><p class="ts">${c.t}</p><blockquote class="big">${e.sent}</blockquote><p class="bx sm">${e.post}</p>${scr(c.n + 1)}<p class="pn">${c.p + 2}</p></div>`; };
-  const partL = pt => `<div class="part"><div class="pp"><p class="rk">Parte</p><p class="rn">${R[pt[0]]}</p></div></div>`;
-  const partR = pt => `<div class="pp pt"><p class="rk">Parte ${R[pt[0]]}</p><h3>${pt[1]}</h3><p>${pt[2]}</p><p class="cc">${pt[3]}</p></div>`;
-  const partS = pt => `<div class="part"><div class="pp"><p class="rk">Parte ${R[pt[0]]}</p><p class="rn" style="margin:6% 0 auto">${R[pt[0]]}</p><h3 style="font-family:var(--f-display);font-size:2.4em;line-height:1;letter-spacing:-.03em;margin-bottom:5%">${pt[1]}</h3><p style="color:rgba(246,240,231,.75)">${pt[2]}</p></div></div>`;
   const endL = `<div class="pp end"><p class="lt">As estradas já estão em você.</p><p class="hand">resta apenas percorrê-las</p></div>`;
   const endR = `<div class="pp end"><p class="lt" style="font-size:1.8em">O caminho continua no livro.</p><a class="btn btn-3d" href="#garantir" style="font-size:1.15em;padding:1em 1.6em">Garantir meu livro</a></div>`;
   const endS = `<div class="pp end"><p class="lt">As estradas já estão em você.</p><p class="hand">resta apenas percorrê-las</p><a class="btn btn-3d" href="#garantir">Garantir meu livro</a></div>`;
 
-  // 0 capa · 1 parte I · 2–4 cap. 1–3 · 5 parte II · 6–9 cap. 4–7 · 10 parte III · 11–13 cap. 8–10 · 14 fim · 15 contracapa
+  // 0 capa · 1–10 capítulos 1–10 · 11 fim · 12 contracapa (o livro não tem partes: só 10 capítulos)
   const S = [{ l: '', r: cover, s: cover, k: 'Estradas no Coração', t: 'Role para abrir o livro.', part: 0 }];
-  const addPart = i => S.push({ l: partL(PARTS[i]), r: partR(PARTS[i]), s: partS(PARTS[i]), k: `Parte ${R[i + 1]} · ${PARTS[i][3]}`, t: PARTS[i][1], part: i + 1 });
   const addCh = c => {
     const v = c.kind === 'op' ? [opener(c), textOp(c), singleOp(c)] : c.kind === 'flow' ? [flowL(c), flowR(c), flowS(c)] : [opener(c), pullR(c), pullS(c)];
-    S.push({ l: v[0], r: v[1], s: v[2], k: `Capítulo ${c.n} · ${c.t}`, t: c.s, part: c.n <= 3 ? 1 : c.n <= 7 ? 2 : 3 });
+    S.push({ l: v[0], r: v[1], s: v[2], k: `Capítulo ${c.n} · ${c.t}`, t: c.s, ch: c.n });
   };
-  addPart(0); CH.slice(0, 3).forEach(addCh); addPart(1); CH.slice(3, 7).forEach(addCh); addPart(2); CH.slice(7).forEach(addCh);
+  CH.forEach(addCh);
   S.push({ l: endL, r: endR, s: endS, k: 'Fim da prévia', t: 'O restante da estrada está no livro.', part: 3 });
   S.push({ l: back, r: '', s: back, k: 'Estradas no Coração', t: 'As estradas já estão em você. Resta apenas percorrê-las.', part: 3 });
   const N = S.length - 1, PRE = .9, POST = .7, SPAN = N + PRE + POST;
@@ -1056,11 +1064,9 @@ const PHASE = (() => { const n = Date.now(); return n < Date.parse(CONFIG.presal
       draw.t = setTimeout(() => { cap.querySelector('.k').textContent = S[idx].k; cap.querySelector('.s').textContent = S[idx].t; cap.classList.remove('out'); }, 200);
       prev.disabled = idx <= 0; next.disabled = idx >= N;
     }
-    const starts = [1, 5, 10, 14];
     segs.forEach((sg, k) => {
-      const a = starts[k], b = starts[k + 1];
-      sg.classList.toggle('on', S[idx].part === k + 1);
-      sg.querySelector('i').style.transform = `scaleX(${clamp((c - a + 1) / (b - a + 1)).toFixed(3)})`;
+      sg.classList.toggle('on', S[idx].ch === k + 1);
+      sg.querySelector('i').style.transform = `scaleX(${clamp(c - k).toFixed(3)})`;
     });
   }
 
