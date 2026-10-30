@@ -806,7 +806,7 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
   $$('[data-phase]').forEach(el => { const v = el.dataset.phase.split('|'); el.innerHTML = v[Math.min(PHASE, v.length - 1)]; });
   const live = PHASE > 0 && CONFIG.buyUrl;
   const main = $('#buyMain');
-  if (live) { $$('a[href="#garantir"]').forEach(a => { a.href = CONFIG.buyUrl; }); main.href = CONFIG.buyUrl; }
+  if (live) { main.href = CONFIG.buyUrl; }
   else { main.removeAttribute('href'); main.setAttribute('aria-disabled', 'true'); }
   if (PHASE === 2) {
     $('#price').innerHTML = '<b><small>R$</small>59,90</b>';
@@ -954,9 +954,8 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
   const pullR = c => { const e = EX[c.n]; return `<div class="pp r pq">${rh('', c.t)}<p class="bx sm">${e.pre}</p><blockquote class="big">${e.sent}</blockquote><p class="bx sm">${e.post}</p><p class="pn">${c.p + 2}</p></div>`; };
   const pullS = c => { const e = EX[c.n]; return `<div class="pp pq"><p class="er" style="padding:0;margin:0 0 2%">Capítulo ${c.n}</p><p class="ts">${c.t}</p><blockquote class="big">${e.sent}</blockquote><p class="bx sm">${e.post}</p>${scr(c.n + 1)}<p class="pn">${c.p + 2}</p></div>`; };
   const endL = `<div class="pp end"><p class="lt">As estradas já estão em você.</p><p class="hand">resta apenas percorrê-las</p></div>`;
-  const BUY = PHASE > 0 && CONFIG.buyUrl ? CONFIG.buyUrl : '#garantir';
-  const endR = `<div class="pp end"><p class="lt" style="font-size:1.8em">O caminho continua no livro.</p><a class="btn btn-3d" href="${BUY}" style="font-size:1.15em;padding:1em 1.6em">Garantir meu livro</a></div>`;
-  const endS = `<div class="pp end"><p class="lt">As estradas já estão em você.</p><p class="hand">resta apenas percorrê-las</p><a class="btn btn-3d" href="${BUY}">Garantir meu livro</a></div>`;
+  const endR = `<div class="pp end"><p class="lt" style="font-size:1.8em">O caminho continua no livro.</p><a class="btn btn-3d" href="#garantir" style="font-size:1.15em;padding:1em 1.6em">Garantir meu livro</a></div>`;
+  const endS = `<div class="pp end"><p class="lt">As estradas já estão em você.</p><p class="hand">resta apenas percorrê-las</p><a class="btn btn-3d" href="#garantir">Garantir meu livro</a></div>`;
 
   // 0 capa · 1–10 capítulos 1–10 · 11 fim · 12 contracapa (o livro não tem partes: só 10 capítulos)
   const S = [{ l: '', r: cover, s: cover, k: 'Estradas no Coração', t: 'Role para abrir o livro.', part: 0 }];
