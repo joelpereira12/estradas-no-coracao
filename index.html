@@ -808,8 +808,8 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
   $$('[data-phase]').forEach(el => { const v = el.dataset.phase.split('|'); el.innerHTML = v[Math.min(PHASE, v.length - 1)]; });
   const live = PHASE > 0 && CONFIG.buyUrl;
   const main = $('#buyMain');
-  if (live) { main.href = CONFIG.buyUrl; }
-  else { main.removeAttribute('href'); main.setAttribute('aria-disabled', 'true'); }
+  // o botão do card sempre leva ao produto na loja (antes de 02/11 o produto fica acessível só por link)
+  if (CONFIG.buyUrl) main.href = CONFIG.buyUrl;
   if (PHASE === 2) {
     $('#price').innerHTML = '<b><small>R$</small>59,90</b>';
     [0, 1, 2].forEach(() => $('#perks').children[0].remove());
@@ -1231,6 +1231,31 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
       else { run = null; root.classList.remove('auto-scroll'); card.classList.remove('landed'); void card.offsetWidth; card.classList.add('landed'); }
     })(t0);
   });
+})();
+
+
+/* ---------- barra inferior do navegador acompanha a cor da página (o topo o Safari já resolve) ---------- */
+(function tint(){
+  const root = document.documentElement;
+  const bgAt = y => {
+    for (const el of document.elementsFromPoint(innerWidth / 2, y)) {
+      if (el.closest('#topbar,#mobileCta,#pl,#trail')) continue;
+      for (let n = el; n && n !== root; n = n.parentElement) {
+        const c = getComputedStyle(n).backgroundColor;
+        if (c && c !== 'transparent' && !/rgba\(.*,\s*0\)$/.test(c)) return c;
+      }
+    }
+    return getComputedStyle(document.body).backgroundColor;
+  };
+  let last = '', raf = 0;
+  function upd(){
+    raf = 0;
+    const bot = bgAt(innerHeight - 2);
+    if (bot === last) return; last = bot;
+    root.style.backgroundColor = bot;
+  }
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+  addEventListener('resize', upd); addEventListener('load', upd); setTimeout(upd, 300);
 })();
 
 
