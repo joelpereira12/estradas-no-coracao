@@ -15,7 +15,9 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<style>html,body{margin:0}</style>
+<style>:root{color-scheme:light;box-sizing:border-box}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+</head>
+<body>
 <title>Estradas no Coração</title>
 <meta name="description" content="Estradas no Coração, o novo livro de Joel Pereira. Percorra o caminho que Deus gravou dentro de você.">
 <style>
@@ -820,6 +822,13 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
   }
 })();
 
+/* ---------- redimensionamento "de verdade": no celular a barra do navegador some/aparece ao rolar e dispara resize
+   o tempo todo; só a largura (ou uma mudança grande de altura) justifica recalcular canvas e trilhos ---------- */
+function onRealResize(fn, wait = 150){
+  let w = innerWidth, h = innerHeight, t;
+  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { if (innerWidth === w && Math.abs(innerHeight - h) < 160) return; w = innerWidth; h = innerHeight; fn(); }, wait); });
+}
+
 /* ---------- HERO: estrada em profundidade (canvas) ---------- */
 (function hero(){
   const hero = $('#hero'), cv = $('#road'), ctx = cv.getContext('2d');
@@ -898,7 +907,7 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
     if (visible) { p = progress(); scrollZ += (p * 70 - scrollZ) * (reduce ? 1 : Math.min(1, dt * 4)); if (!reduce) speedZ += dt * .9; camZ = speedZ + scrollZ; layout(draw()); }
     requestAnimationFrame(frame);
   }
-  size(); addEventListener('resize', size); requestAnimationFrame(frame);
+  size(); onRealResize(size, 60); requestAnimationFrame(frame);
 })();
 
 /* ---------- O LIVRO QUE SE FOLHEIA ----------
@@ -1282,7 +1291,7 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
     path.setAttribute('d', d);
     L = path.getTotalLength(); path.style.strokeDasharray = L;
     // tabela comprimento → altura: o ponto acompanha a altura da tela, não a fração do comprimento
-    LUT = []; for (let l = 0; l <= L; l += 4) { const q = path.getPointAtLength(l); LUT.push([l, q.y, q.x]); } { const q = path.getPointAtLength(L); LUT.push([L, q.y, q.x]); }
+    LUT = []; for (let l = 0; l <= L; l += 8) { const q = path.getPointAtLength(l); LUT.push([l, q.y, q.x]); } { const q = path.getPointAtLength(L); LUT.push([L, q.y, q.x]); }
     update();
   }
   function update(){
@@ -1303,7 +1312,7 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
   }
   let raf = 0;
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; update(); }); }, { passive: true });
-  let to; addEventListener('resize', () => { clearTimeout(to); to = setTimeout(build, 150); });
+  onRealResize(build);
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(build);
   addEventListener('load', build); build();
 })();
@@ -1403,4 +1412,5 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
 })();
 </script>
 
+</body>
 </html>
