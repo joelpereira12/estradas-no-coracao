@@ -96,14 +96,18 @@ h2,h3{text-wrap:balance;font-family:var(--f-display)}
 .glass-dark{background:linear-gradient(140deg,rgba(60,14,9,.55),rgba(20,4,2,.42));border-color:rgba(255,255,255,.22)}
 
 /* ---------- botões 3D ---------- */
-.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.7em;font:600 var(--s-sm)/1.15 var(--f-display);padding:1.1em 1.8em;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .35s var(--ease),box-shadow .35s var(--ease),filter .3s;text-align:center}
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.7em;font:600 var(--s-sm)/1.15 var(--f-display);padding:1.05em 1.7em;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .35s var(--ease),box-shadow .35s var(--ease),filter .3s;text-align:center}
 .btn svg{width:1.05em;height:1.05em;flex:none;transition:transform .35s var(--ease)}
 .btn:hover svg{transform:translateX(3px)}
-.btn-3d{color:var(--white);background:linear-gradient(180deg,var(--red-hi) 0%,var(--red) 52%,var(--red-lo) 100%);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -2px 0 rgba(0,0,0,.18);animation:bob 3.2s ease-in-out infinite}
-.btn-3d:hover{transform:translateY(-2px);filter:brightness(1.06)}
-.btn-3d:active{transform:translateY(1px);filter:brightness(.96)}
+.btn-3d{color:var(--white);background:var(--red);box-shadow:0 10px 24px -14px rgba(194,52,31,.9);letter-spacing:-.005em;transition:background .3s,transform .35s var(--ease),box-shadow .35s var(--ease)}
+.btn-3d:hover{background:var(--red-lo)}
+.topbar:not(.solid) .btn-3d{background:var(--white);color:var(--red);box-shadow:none}
+.topbar:not(.solid) .btn-3d:hover{background:var(--cream)}
+.btn-3d:hover{transform:translateY(-1px)}
+.btn-3d:active{transform:translateY(0)}
 @keyframes bob{0%,100%{translate:0 0}50%{translate:0 -3px}}
-.btn-ink{color:var(--white);background:linear-gradient(180deg,#4a1a12,var(--ink) 60%);box-shadow:inset 0 1px 0 rgba(255,255,255,.22)}
+.btn-ink{color:var(--white);background:var(--ink);transition:background .3s,transform .35s var(--ease)}
+.btn-ink:hover{background:#3a120c}
 .btn-ink:hover{transform:translateY(-2px)}
 .btn[aria-disabled="true"]{cursor:default}
 
@@ -122,7 +126,11 @@ h2,h3{text-wrap:balance;font-family:var(--f-display)}
 .topbar.solid .tb-store{color:var(--ink)}
 .tb-store:hover{background:rgba(255,255,255,.12)}.topbar.solid .tb-store:hover{background:rgba(30,7,4,.07)}
 .tb-store svg{width:1.35em;height:1.35em}
-.f-store{display:inline-flex;align-items:center;gap:.5em;color:var(--white);text-decoration:none;font-family:var(--f-display);font-weight:600;font-size:.8rem;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.7em 1.2em;margin-top:14px;transition:background .3s}
+.f-r{display:grid;justify-items:end;gap:14px}
+.f-store{display:inline-flex;align-items:center;gap:.55em;color:var(--white);text-decoration:none;font-family:var(--f-display);font-weight:600;font-size:.78rem;line-height:1;white-space:nowrap;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.85em 1.25em;transition:background .3s,border-color .3s}
+.f-store svg{width:1.15em;height:1.15em;flex:none}
+.f-store:hover{border-color:rgba(255,255,255,.5)}
+@media (max-width:720px){.f-r{justify-items:start}}
 .f-store:hover{background:rgba(255,255,255,.08)}
 @media (max-width:359px){.tb-store span{display:none}.tb-store{padding:.8em .6em}}
 @media (max-width:420px){.tb-r{gap:2px}.tb-store{padding:.8em .7em}}
@@ -253,20 +261,15 @@ p,li,blockquote{text-wrap:pretty}
 .pg.l .cast{background:linear-gradient(270deg,rgba(30,7,4,.38),rgba(30,7,4,0) 70%)}
 .leaf{left:50%;transform-style:preserve-3d;transform-origin:0 50%;display:none;will-change:transform}
 .sg{position:absolute;top:0;height:100%;transform-style:preserve-3d;transform-origin:0 50%}
-.sg.s1{left:0;width:50%}
-.sg.s2{left:100%;width:100%}
-.leaf .side{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--page);overflow:hidden}
-.leaf .side.f{transform:translateZ(.2px)}
-.leaf .side.b{transform:rotateY(180deg) translateZ(.2px)}
-.leaf .s2>.side.f{border-radius:0 8px 8px 0}.leaf .s2>.side.b{border-radius:8px 0 0 8px}
-.leaf .w{position:absolute;top:0;height:100%;width:200%}
-.leaf .s1>.f>.w,.leaf .s2>.b>.w{left:0}
-.leaf .s2>.f>.w,.leaf .s1>.b>.w{left:-100%}
-.leaf .side::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:7}
-.leaf .s1>.f::after{background:linear-gradient(90deg,rgba(30,7,4,var(--sh,0)),rgba(30,7,4,0) 80%)}
-.leaf .s2>.f::after{background:linear-gradient(90deg,rgba(255,255,255,var(--gl,0)),rgba(30,7,4,var(--cs,0)) 100%)}
-.leaf .s1>.b::after{background:linear-gradient(270deg,rgba(30,7,4,var(--sh,0)),rgba(30,7,4,0) 80%)}
-.leaf .s2>.b::after{background:linear-gradient(270deg,rgba(255,255,255,var(--gl,0)),rgba(30,7,4,var(--cs,0)) 100%)}
+.leaf>.sg{left:0;width:calc(100% / var(--ns,6))}
+.sg .sg{left:100%;width:100%}
+.leaf .side{position:absolute;inset:0 -1px 0 0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--page);overflow:hidden}
+.leaf .side.f{transform:translateZ(.15px)}
+.leaf .side.b{transform:rotateY(180deg) translateZ(.15px)}
+.leaf .sg.last>.side.f{border-radius:0 8px 8px 0}.leaf .sg.last>.side.b{border-radius:8px 0 0 8px}
+.leaf .w{position:absolute;top:0;height:100%}
+.leaf .side::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:7;background:linear-gradient(90deg,rgba(var(--c0,30,7,4),var(--a0,0)),rgba(var(--c1,30,7,4),var(--a1,0)))}
+.leaf .side.b::after{background:linear-gradient(270deg,rgba(var(--c0,30,7,4),var(--a0,0)),rgba(var(--c1,30,7,4),var(--a1,0)))}
 .blank-pg{position:absolute;inset:0;background-repeat:no-repeat;background-size:100% 100%}
 .scrib{flex:1;min-height:0;margin-top:4%;background-repeat:no-repeat;background-size:100% auto;background-position:top center;opacity:.9}
 .f3d{position:absolute;top:.6%;height:98.8%;display:none;pointer-events:none;backface-visibility:hidden}
@@ -764,9 +767,8 @@ footer.site .wrap{padding-block:56px calc(40px + env(safe-area-inset-bottom,0px)
       <div>
         <b>Estradas no Coração · Joel Pereira</b>
         <span><span class="nw">10 capítulos</span> · <span class="nw">Selo Rompendo Limites</span> · <span class="nw">ISBN 978-65-02-41168-1</span></span>
-        <a class="f-store" href="https://store.projetovida.com/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Voltar para a Projeto Vida Store</a>
       </div>
-      <span>© 2026 Joel Pereira</span>
+      <div class="f-r"><a class="f-store" href="https://store.projetovida.com/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span>Voltar para a Projeto Vida Store</span></a><span>© 2026 Joel Pereira</span></div>
     </div>
     <p class="credits"><span>Coordenação: Lara Valente</span><span>Edição: Emilly Albertassi</span><span>Revisão: Márcia Ribeiro</span><span>Capa: Rafael Feijó</span><span>Diagramação: Lucas Teixeira e Caio Victor</span></p>
     <div class="logos">
@@ -972,13 +974,18 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
   const pgL = $('#pgL'), pgR = $('#pgR'), cL = $('#pgL .pc'), cR = $('#pgR .pc'), castL = $('#pgL .cast'), castR = $('#pgR .cast');
   const cap = $('#caption'), prev = $('#bkPrev'), next = $('#bkNext'), segs = $$('.seg'), hint = $('#dragHint');
   // folhas com dobra: cada folha tem duas metades; a de fora "atrasa" e curva o papel
-  const side = cls => `<div class="side ${cls}"><div class="w"></div></div>`;
+  // folha "mole": várias faixas encadeadas, cada uma dobra um pouco mais que a anterior (curva contínua, sem vinco)
+  const NS = 7;
   const leaves = [0, 1, 2].map(() => {
-    const d = document.createElement('div'); d.className = 'leaf';
-    d.innerHTML = `<div class="sg s1">${side('f')}${side('b')}<div class="sg s2">${side('f')}${side('b')}</div></div>`;
-    bk.appendChild(d);
-    const s1 = d.querySelector('.s1'), s2 = d.querySelector('.s2');
-    return { el: d, s2, fw: [s1.children[0].firstChild, s2.children[0].firstChild], bw: [s1.children[1].firstChild, s2.children[1].firstChild], kf: null, kb: null };
+    const d = document.createElement('div'); d.className = 'leaf'; d.style.setProperty('--ns', NS);
+    let html = '';
+    for (let k = NS - 1; k >= 0; k--) {
+      const wf = `width:calc(${NS} * (100% - 1px));left:calc(${-k} * (100% - 1px))`, wb = `width:calc(${NS} * (100% - 1px));left:calc(${-(NS - 1 - k)} * (100% - 1px))`;
+      html = `<div class="sg${k === NS - 1 ? ' last' : ''}"><div class="side f"><div class="w" style="${wf}"></div></div><div class="side b"><div class="w" style="${wb}"></div></div>${html}</div>`;
+    }
+    d.innerHTML = html; bk.appendChild(d);
+    const segs = [...d.querySelectorAll('.sg')];
+    return { el: d, segs, fw: segs.map(g => g.children[0].firstChild), bw: segs.map(g => g.children[1].firstChild), kf: null, kb: null };
   });
   // faces 3D do livro fechado: lombada e bloco de páginas
   const spine = document.createElement('div'); spine.className = 'f3d spine'; spine.innerHTML = '<img src="' + $('#heroBook .spine img').src + '" alt="">';
@@ -1077,14 +1084,20 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
       const a = -180 * ease(t);
       if (t <= 0 || t >= 1) { lf.el.style.display = 'none'; return; }
       const s = Math.sin(-a * Math.PI / 180);
-      const curl = (single ? 26 : 34) * s * (a > -90 ? 1 : .55);
+      const curl = (single ? 34 : 44) * s * (a > -90 ? 1 : .55);
       lf.el.style.display = 'block';
       lf.el.style.zIndex = a > -90 ? 30 - k : 30 + k;
       lf.el.style.transform = `rotateY(${a}deg) translateZ(${s * (single ? 4 : 10)}px)`;
-      lf.s2.style.transform = `rotateY(${curl}deg)`;
-      lf.el.style.setProperty('--sh', (s * .3).toFixed(3));
-      lf.el.style.setProperty('--gl', (s * .28).toFixed(3));
-      lf.el.style.setProperty('--cs', (s * .22).toFixed(3));
+      // curva: a dobra cresce em direção à borda livre (papel mole), e a luz acompanha a curvatura
+      const wsum = NS * (NS - 1) / 2;
+      lf.segs.forEach((g, i) => {
+        g.style.transform = i ? `rotateY(${(curl * i / wsum).toFixed(3)}deg)` : '';
+        const u0 = i / NS, u1 = (i + 1) / NS;
+        const lit = u => Math.sin(Math.PI * u) * s * .22 * (a > -90 ? 1 : .6), dark = u => Math.pow(1 - u, 2) * s * .32;
+        const v0 = lit(u0) - dark(u0), v1 = lit(u1) - dark(u1);
+        g.style.setProperty('--c0', v0 >= 0 ? '255,255,255' : '30,7,4'); g.style.setProperty('--a0', Math.abs(v0).toFixed(3));
+        g.style.setProperty('--c1', v1 >= 0 ? '255,255,255' : '30,7,4'); g.style.setProperty('--a1', Math.abs(v1).toFixed(3));
+      });
       if (a > -90) shR = Math.max(shR, s * (k === 0 ? 1 : .55)); else shL = Math.max(shL, s * (last ? 1 : .55));
     });
     castR.style.opacity = (shR * .9).toFixed(3); castL.style.opacity = (shL * .9).toFixed(3);
@@ -1244,7 +1257,7 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
 /* ---------- trilha que se desenha com o scroll ---------- */
 (function trail(){
   const host = $('#journey'), svg = $('#trail'), path = $('#trailPath'), dot = $('#trailDot');
-  let L = 0;
+  let L = 0, LUT = [];
   function build(){
     const W = host.clientWidth, H = host.scrollHeight;
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
@@ -1257,14 +1270,24 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
       d += ` L ${cx} ${top} C ${cx} ${top + pad * .65}, ${x} ${top + pad * .35}, ${x} ${top + pad} L ${x} ${bot - pad} C ${x} ${bot - pad * .35}, ${cx} ${bot - pad * .65}, ${cx} ${bot}`;
     });
     path.setAttribute('d', d);
-    L = path.getTotalLength(); path.style.strokeDasharray = L; update();
+    L = path.getTotalLength(); path.style.strokeDasharray = L;
+    // tabela comprimento → altura: o ponto acompanha a altura da tela, não a fração do comprimento
+    LUT = []; for (let l = 0; l <= L; l += 6) LUT.push([l, path.getPointAtLength(l).y]); LUT.push([L, path.getPointAtLength(L).y]);
+    update();
   }
   function update(){
     if (!L) return;
     const r = host.getBoundingClientRect();
-    const prog = reduce ? 1 : clamp((innerHeight * .6 - r.top) / r.height);
-    path.style.strokeDashoffset = L * (1 - prog);
-    const pt = path.getPointAtLength(L * prog);
+    const y = innerHeight * .6 - r.top;
+    let len;
+    if (reduce) len = L;
+    else if (y <= 0) len = 0;
+    else if (y >= LUT[LUT.length - 1][1]) len = L;
+    else { let lo = 0, hi = LUT.length - 1; while (hi - lo > 1) { const m = (lo + hi) >> 1; if (LUT[m][1] < y) lo = m; else hi = m; }
+      const [l0, y0] = LUT[lo], [l1, y1] = LUT[hi]; len = y1 > y0 ? l0 + (l1 - l0) * (y - y0) / (y1 - y0) : l1; }
+    const prog = len / L;
+    path.style.strokeDashoffset = L - len;
+    const pt = path.getPointAtLength(len);
     dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y);
     dot.style.opacity = prog > 0 && prog < 1 ? 1 : 0;
   }
