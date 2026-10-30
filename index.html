@@ -1234,12 +1234,19 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
 })();
 
 
-/* ---------- barra inferior do navegador acompanha a cor da página (o topo o Safari já resolve) ---------- */
+/* ---------- barra inferior do navegador acompanha a cor da página ----------
+   O Safari (iOS 26) tinge a barra com a cor do elemento fixo encostado na borda. Sem isso ele pegava
+   o botão flutuante (vidro branco). Uma faixa fixa de 2px na base, com a cor da seção atual, resolve.
+   O topo continua sendo detectado pelo próprio Safari. */
 (function tint(){
+  const band = document.createElement('div');
+  band.id = 'tintB'; band.setAttribute('aria-hidden', 'true');
+  band.style.cssText = 'position:fixed;left:0;right:0;bottom:0;height:2px;z-index:60;pointer-events:none';
+  document.body.appendChild(band);
   const root = document.documentElement;
   const bgAt = y => {
     for (const el of document.elementsFromPoint(innerWidth / 2, y)) {
-      if (el.closest('#topbar,#mobileCta,#pl,#trail')) continue;
+      if (el.closest('#topbar,#mobileCta,#pl,#trail,#tintB')) continue;
       for (let n = el; n && n !== root; n = n.parentElement) {
         const c = getComputedStyle(n).backgroundColor;
         if (c && c !== 'transparent' && !/rgba\(.*,\s*0\)$/.test(c)) return c;
@@ -1248,12 +1255,7 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
     return getComputedStyle(document.body).backgroundColor;
   };
   let last = '', raf = 0;
-  function upd(){
-    raf = 0;
-    const bot = bgAt(innerHeight - 2);
-    if (bot === last) return; last = bot;
-    root.style.backgroundColor = bot;
-  }
+  function upd(){ raf = 0; const c = bgAt(innerHeight - 4); if (c !== last) { last = c; band.style.backgroundColor = c; } }
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
   addEventListener('resize', upd); addEventListener('load', upd); setTimeout(upd, 300);
 })();
