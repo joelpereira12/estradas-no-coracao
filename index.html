@@ -1237,25 +1237,24 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
 /* ---------- barra inferior do navegador acompanha a cor da página ----------
    O Safari (iOS 26) tinge a barra com a cor do elemento fixo encostado na borda. Sem isso ele pegava
    o botão flutuante (vidro branco). Uma faixa fixa de 2px na base, com a cor da seção atual, resolve.
-   O topo continua sendo detectado pelo próprio Safari. */
+   O mesmo vale para o topo (faixa no alto). */
 (function tint(){
-  const band = document.createElement('div');
-  band.id = 'tintB'; band.setAttribute('aria-hidden', 'true');
-  band.style.cssText = 'position:fixed;left:0;right:0;bottom:0;height:2px;z-index:60;pointer-events:none';
-  document.body.appendChild(band);
+  const mk = (id, edge) => { const d = document.createElement('div'); d.id = id; d.setAttribute('aria-hidden', 'true');
+    d.style.cssText = `position:fixed;left:0;right:0;${edge}:0;height:2px;z-index:60;pointer-events:none`; document.body.appendChild(d); return d; };
+  const band = mk('tintB', 'bottom'), bandT = mk('tintT', 'top');
   const root = document.documentElement;
+  const blocks = () => [...document.querySelectorAll('#hero, #journey > section, #journey section, footer.site')];
+  const solid = c => c && c !== 'transparent' && !/rgba\(.*,\s*0\)$/.test(c);
   const bgAt = y => {
-    for (const el of document.elementsFromPoint(innerWidth / 2, y)) {
-      if (el.closest('#topbar,#mobileCta,#pl,#trail,#tintB')) continue;
-      for (let n = el; n && n !== root; n = n.parentElement) {
-        const c = getComputedStyle(n).backgroundColor;
-        if (c && c !== 'transparent' && !/rgba\(.*,\s*0\)$/.test(c)) return c;
-      }
-    }
+    let hit = null;
+    for (const el of blocks()) { const r = el.getBoundingClientRect(); if (r.top <= y && r.bottom > y) hit = el; }
+    if (hit && hit.id === 'hero') return y < innerHeight / 2 ? 'rgb(201,72,52)' : 'rgb(30,7,4)';
+    for (let n = hit; n && n !== root; n = n.parentElement) { const c = getComputedStyle(n).backgroundColor; if (solid(c)) return c; }
     return getComputedStyle(document.body).backgroundColor;
   };
   let last = '', raf = 0;
-  function upd(){ raf = 0; const c = bgAt(innerHeight - 4); if (c !== last) { last = c; band.style.backgroundColor = c; } }
+  let lastT = '';
+  function upd(){ raf = 0; const c = bgAt(innerHeight - 12), t = bgAt(12); if (c !== last) { last = c; band.style.backgroundColor = c; } if (t !== lastT) { lastT = t; bandT.style.backgroundColor = t; } }
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
   addEventListener('resize', upd); addEventListener('load', upd); setTimeout(upd, 300);
 })();
