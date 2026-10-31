@@ -487,6 +487,34 @@ footer.site .wrap{padding-block:56px calc(40px + env(safe-area-inset-bottom,0px)
 
 .mobile-cta{display:none}
 
+
+/* ================= DÚVIDAS FREQUENTES ================= */
+.faq{background:var(--paper);color:var(--ink)}
+.faq .wrap{padding-block:clamp(80px,10vw,140px);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px);align-items:start}
+.faq-head{position:sticky;top:110px}
+.faq-head .eyebrow{color:var(--red)}
+.faq-head h2{font-size:var(--s-xl);line-height:1.02;letter-spacing:-.035em;margin:14px 0 0;font-weight:700}
+.faq-list{display:grid}
+.faq-g{font-family:var(--f-display);font-size:var(--s-xs);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin:34px 0 6px}
+.faq-g:first-child{margin-top:0}
+.faq details{border-bottom:1px solid rgba(30,7,4,.14)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 0;font-family:var(--f-display);font-weight:600;font-size:var(--s-md);line-height:1.3;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{width:20px;height:20px;flex:none;color:var(--red);transition:transform .4s var(--ease)}
+.faq details[open] summary svg{transform:rotate(180deg)}
+.faq summary:hover span{color:var(--red-lo)}
+.faq summary:focus-visible{outline:2px solid var(--red);outline-offset:4px;border-radius:4px}
+.faq-a{overflow:hidden}
+.faq-a p{margin:0 0 20px;color:var(--ink-soft);max-width:60ch}
+.faq-a a{color:var(--red-lo);font-weight:600}
+.faq details[open] .faq-a{animation:faqIn .45s var(--ease)}
+@keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.faq-wa{grid-column:2;justify-self:start;display:inline-flex;align-items:center;gap:.6em;margin-top:28px;font-family:var(--f-display);font-weight:600;font-size:var(--s-sm);color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--red);padding-bottom:.3em}
+.faq-wa svg{width:1.1em;height:1.1em;color:var(--red);transition:transform .35s var(--ease)}
+.faq-wa:hover svg{transform:translateX(3px)}
+@media (max-width:900px){.faq .wrap{grid-template-columns:1fr}.faq-head{position:static}.faq-wa{grid-column:1}}
+@media (prefers-reduced-motion:reduce){.faq details[open] .faq-a{animation:none}}
+
 /* ================= RESPONSIVO ================= */
 @media (max-width:900px){
   .pergunta .wrap,.davi .wrap,.rot-head,.quem .wrap,.autor .wrap{grid-template-columns:1fr}
@@ -756,6 +784,39 @@ footer.site .wrap{padding-block:56px calc(40px + env(safe-area-inset-bottom,0px)
       </div>
     </section>
 
+    <!-- PERGUNTAS FREQUENTES -->
+    <section class="faq" id="duvidas" data-trail>
+      <div class="wrap">
+        <div class="faq-head rv"><p class="eyebrow">Dúvidas frequentes</p><h2>Antes de pegar a estrada</h2></div>
+        <div class="faq-list">
+          <h3 class="faq-g rv">Entrega e retirada</h3>
+          <details><summary><span>Quando recebo o meu livro?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p><span data-phase="A pré-venda garante o seu exemplar. Os envios e as retiradas começam no dia 20 de novembro, data do lançamento.|A pré-venda garante o seu exemplar. Os envios e as retiradas começam no dia 20 de novembro, data do lançamento.|Os pedidos são enviados ou ficam disponíveis para retirada logo após a confirmação do pagamento.">A pré-venda garante o seu exemplar. Os envios e as retiradas começam no dia 20 de novembro, data do lançamento.</span></p></div></details>
+          <details><summary><span>Onde retiro o livro?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Na Projeto Vida Store: Av. Almirante Adalberto de Barros Nunes, 3060, Volta Redonda (RJ). As retiradas começam em 20/11, a partir do meio-dia.</p></div></details>
+          <details class="pre-only"><summary><span>Posso retirar no lançamento?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Pode. No dia 20 de novembro, durante o Projeto Vida Day, os livros da pré-venda já estarão disponíveis para retirada a partir do meio-dia.</p></div></details>
+          <details><summary><span>O que preciso levar para retirar?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>O número do pedido ou o nome e o CPF do comprador. É rápido: você informa e leva o seu livro.</p></div></details>
+          <h3 class="faq-g rv">Envio e frete</h3>
+          <details><summary><span>Vocês enviam para todo o Brasil?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Sim. O frete é calculado no carrinho, a partir do seu CEP.</p></div></details>
+          <details><summary><span>Tem frete grátis?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Tem: nas compras acima de R$ 299 na Projeto Vida Store.</p></div></details>
+          <details class="pre-only"><summary><span>Comprei o livro junto com outros produtos. Quando chega?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>O pedido é enviado completo, de uma vez só, a partir de 20/11. Se quiser receber os outros produtos antes, faça dois pedidos separados.</p></div></details>
+          <details><summary><span>Como acompanho o meu pedido?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Assim que o pedido for despachado, você recebe o código de rastreio por e-mail.</p></div></details>
+          <details><summary><span>Posso enviar de presente direto para outra pessoa?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Pode. É só colocar o endereço dela na hora da entrega.</p></div></details>
+          <h3 class="faq-g rv">Preço e pagamento</h3>
+          <details class="pre-only"><summary><span>Até quando vale o preço de R$ 49,90?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Até 19 de novembro, às 23h59. A partir do lançamento, o livro passa a custar R$ 59,90.</p></div></details>
+          <details><summary><span>Quais as formas de pagamento?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Pix ou cartão de crédito.</p></div></details>
+          <details><summary><span>Posso comprar na loja física ou com os vendedores?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p><span data-phase="A pré-venda é feita exclusivamente pelo site.|A pré-venda é feita exclusivamente pelo site.|Pode: o livro está disponível no site e na Projeto Vida Store.">A pré-venda é feita exclusivamente pelo site.</span></p></div></details>
+          <h3 class="faq-g rv">O livro</h3>
+          <details><summary><span>Todos os livros da pré-venda vêm autografados?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Sim. Todos os exemplares da pré-venda são autografados pelo Ap. Joel Pereira.</p></div></details>
+          <details><summary><span>Como é o livro?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Formato 14 x 21 cm, lombada de 1,5 cm e 10 capítulos.</p></div></details>
+          <details><summary><span>Vai ter e-book ou audiobook?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Por enquanto, Estradas no Coração chega só no papel, para ser lido com calma, sublinhado e levado na bagagem. A versão digital virá mais adiante.</p></div></details>
+          <details><summary><span>Posso comprar vários para presentear?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Pode, e cada exemplar da pré-venda vem autografado.</p></div></details>
+          <details><summary><span>Tem condição especial para igrejas, células ou compras em quantidade?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Tem. Fale com a gente pelo <a href="https://wa.me/5524999076390?text=Ol%C3%A1!%20Quero%20comprar%20o%20livro%20Estradas%20no%20Cora%C3%A7%C3%A3o%20em%20quantidade." target="_blank" rel="noopener">WhatsApp da loja</a> que passamos as condições.</p></div></details>
+          <h3 class="faq-g rv">Outras dúvidas</h3>
+          <details><summary><span>E se eu mudar de ideia?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Sem problema. Se você se arrepender, pode desistir em até 7 dias depois da compra, é só falar com a gente.</p></div></details>
+        </div>
+        <a class="faq-wa rv" href="https://wa.me/5524999076390?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20livro%20Estradas%20no%20Cora%C3%A7%C3%A3o." target="_blank" rel="noopener"><span>Ficou alguma dúvida? Fale com a gente no WhatsApp</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </section>
+
     <!-- FIM -->
     <section class="final grain" data-trail>
       <div class="wrap">
@@ -816,6 +877,7 @@ const PHASE = (() => { const q = new URLSearchParams(location.search).get('fase'
   // o botão do card sempre leva ao produto na loja (antes de 02/11 o produto fica acessível só por link)
   if (CONFIG.buyUrl) main.href = CONFIG.buyUrl;
   if (PHASE === 2) {
+    $$('.faq .pre-only').forEach(d => d.remove());
     $('#price').innerHTML = '<b><small>R$</small>59,90</b>';
     [0, 1, 2].forEach(() => $('#perks').children[0].remove());
     $('#when').hidden = true; $('#count').hidden = true;
