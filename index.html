@@ -498,7 +498,7 @@ footer.site .wrap{padding-block:56px calc(40px + env(safe-area-inset-bottom,0px)
 .faq-t{font-family:var(--f-display);font-size:var(--s-lg);font-weight:700;letter-spacing:-.03em;line-height:1.05}
 .faq-plus{width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(30,7,4,.2);transition:background .3s,border-color .3s}
 .faq .faq-plus svg{width:22px;height:22px}
-.faq-all[open]>summary .faq-plus svg{transform:rotate(180deg)}
+.faq-all.is-open>summary .faq-plus svg{transform:rotate(180deg)}
 .faq-all>summary:hover .faq-plus{border-color:var(--red)}
 .faq-body{padding-bottom:clamp(28px,4vw,48px)}
 .faq-list{display:grid}
@@ -507,8 +507,8 @@ footer.site .wrap{padding-block:56px calc(40px + env(safe-area-inset-bottom,0px)
 .faq-list details{border-bottom:1px solid rgba(30,7,4,.14)}
 .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 0;font-family:var(--f-display);font-weight:600;font-size:var(--s-md);line-height:1.3;letter-spacing:-.01em}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary svg{width:20px;height:20px;flex:none;color:var(--red);transition:transform .4s var(--ease)}
-.faq-list details[open] summary svg{transform:rotate(180deg)}
+.faq summary svg{width:20px;height:20px;flex:none;color:var(--red);transition:transform .45s var(--ease)}
+.faq-list details.is-open summary svg{transform:rotate(180deg)}
 .faq-list summary:hover span{color:var(--red-lo)}
 .faq summary:focus-visible{outline:2px solid var(--red);outline-offset:4px;border-radius:4px}
 .faq-a{overflow:hidden}
@@ -794,28 +794,28 @@ footer.site .wrap{padding-block:56px calc(40px + env(safe-area-inset-bottom,0px)
       <div class="wrap">
         <details class="faq-all rv"><summary class="faq-top"><span class="faq-head"><span class="eyebrow">Dúvidas frequentes</span><span class="faq-t">Antes de pegar a estrada</span></span><span class="faq-plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>
         <div class="faq-body"><div class="faq-list">
-          <h3 class="faq-g rv">Entrega e retirada</h3>
+          <h3 class="faq-g">Entrega e retirada</h3>
           <details><summary><span>Quando recebo o meu livro?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p><span data-phase="A pré-venda garante o seu exemplar. Os envios e as retiradas começam no dia 20 de novembro, data do lançamento.|A pré-venda garante o seu exemplar. Os envios e as retiradas começam no dia 20 de novembro, data do lançamento.|Os pedidos são enviados ou ficam disponíveis para retirada logo após a confirmação do pagamento.">A pré-venda garante o seu exemplar. Os envios e as retiradas começam no dia 20 de novembro, data do lançamento.</span></p></div></details>
           <details><summary><span>Onde retiro o livro?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Na Projeto Vida, na Projeto Vida Store: Av. Almirante Adalberto de Barros Nunes, 3060, Volta Redonda (RJ). As retiradas começam em 20/11, a partir do meio-dia.</p></div></details>
           <details class="pre-only"><summary><span>Posso retirar no lançamento?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Pode. No dia 20 de novembro, durante o Projeto Vida Day, os livros da pré-venda já estarão disponíveis para retirada a partir do meio-dia.</p></div></details>
           <details><summary><span>O que preciso levar para retirar?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>O número do pedido ou o nome e o CPF do comprador. É rápido: você informa e leva o seu livro.</p></div></details>
-          <h3 class="faq-g rv">Envio e frete</h3>
+          <h3 class="faq-g">Envio e frete</h3>
           <details><summary><span>Vocês enviam para todo o Brasil?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Sim. O frete é calculado no carrinho, a partir do seu CEP.</p></div></details>
           <details><summary><span>Tem frete grátis?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Tem: nas compras acima de R$ 299 na Projeto Vida Store.</p></div></details>
           <details class="pre-only"><summary><span>Comprei o livro junto com outros produtos. Quando chega?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>O pedido é enviado completo, de uma vez só, a partir de 20/11. Se quiser receber os outros produtos antes, faça dois pedidos separados.</p></div></details>
           <details><summary><span>Como acompanho o meu pedido?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Assim que o pedido for despachado, você recebe o código de rastreio por e-mail.</p></div></details>
           <details><summary><span>Posso enviar de presente direto para outra pessoa?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Pode. É só colocar o endereço dela na hora da entrega.</p></div></details>
-          <h3 class="faq-g rv">Preço e pagamento</h3>
+          <h3 class="faq-g">Preço e pagamento</h3>
           <details class="pre-only"><summary><span>Até quando vale o preço de R$ 49,90?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Até 19 de novembro, às 23h59. A partir do lançamento, o livro passa a custar R$ 59,90.</p></div></details>
           <details><summary><span>Quais as formas de pagamento?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Pix ou cartão de crédito.</p></div></details>
           <details><summary><span>Posso comprar na loja física ou com os vendedores?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p><span data-phase="A pré-venda é feita exclusivamente pelo site.|A pré-venda é feita exclusivamente pelo site.|Pode: o livro está disponível no site e na Projeto Vida Store.">A pré-venda é feita exclusivamente pelo site.</span></p></div></details>
-          <h3 class="faq-g rv">O livro</h3>
+          <h3 class="faq-g">O livro</h3>
           <details><summary><span>Todos os livros da pré-venda vêm autografados?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Sim. Todos os exemplares da pré-venda são autografados pelo Ap. Joel Pereira.</p></div></details>
           <details><summary><span>Como é o livro?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Formato 14 x 21 cm, lombada de 1,5 cm e 10 capítulos.</p></div></details>
           <details><summary><span>Vai ter e-book ou audiobook?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Por enquanto, Estradas no Coração chega só no papel, para ser lido com calma, sublinhado e levado na bagagem. A versão digital virá mais adiante.</p></div></details>
           <details><summary><span>Posso comprar vários para presentear?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Pode, e cada exemplar da pré-venda vem autografado.</p></div></details>
           <details><summary><span>Tem condição especial para igrejas, células ou compras em quantidade?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Tem, a partir de 100 unidades. Fale com a gente pelo <a href="https://wa.me/5524999076390?text=Ol%C3%A1!%20Quero%20comprar%20o%20livro%20Estradas%20no%20Cora%C3%A7%C3%A3o%20em%20quantidade." target="_blank" rel="noopener">WhatsApp da loja</a> que passamos as condições.</p></div></details>
-          <h3 class="faq-g rv">Outras dúvidas</h3>
+          <h3 class="faq-g">Outras dúvidas</h3>
           <details><summary><span>E se eu mudar de ideia?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><p>Sem problema. Se você se arrepender, pode desistir em até 7 dias depois da compra, é só falar com a gente.</p></div></details>
         </div>
         <a class="faq-wa" href="https://wa.me/5524999076390?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20livro%20Estradas%20no%20Cora%C3%A7%C3%A3o." target="_blank" rel="noopener"><span>Ficou alguma dúvida? Fale com a gente no WhatsApp</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -1321,27 +1321,34 @@ function onRealResize(fn, wait = 150){
 
 
 
-/* ---------- dúvidas frequentes: abrir e fechar com movimento ---------- */
+/* ---------- dúvidas frequentes: abrir e fechar com movimento ----------
+   Cada <details> guarda a intenção (abrir/fechar); cliques rápidos invertem a animação a partir da altura atual.
+   Ao terminar, avisa a linha-guia (evento 'faqdone') para refazer o caminho uma única vez. */
 (function faq(){
-  const ease = 'cubic-bezier(.22,.8,.2,1)';
+  const EASE = 'cubic-bezier(.22,.8,.2,1)';
+  let doneT;
+  const done = () => { clearTimeout(doneT); doneT = setTimeout(() => dispatchEvent(new Event('faqdone')), 60); };
   $$('.faq details').forEach(d => {
     const sum = d.querySelector(':scope > summary'), body = d.querySelector(':scope > .faq-body, :scope > .faq-a');
     if (!sum || !body) return;
-    let anim = null;
+    let anim = null, want = d.open; d.classList.toggle('is-open', want); sum.setAttribute('aria-expanded', want);
     sum.addEventListener('click', e => {
-      if (reduce) return;
       e.preventDefault();
-      if (anim) anim.cancel();
-      const closing = d.open;
-      if (!closing) d.open = true;
-      const h = body.scrollHeight;
+      want = !want;
+      sum.setAttribute('aria-expanded', want);
+      d.classList.toggle('is-open', want);
+      // fechando o bloco inteiro com o título fora da tela: volta suavemente para o título
+      if (!want && d.classList.contains('faq-all')) { const t = sum.getBoundingClientRect().top; if (t < 0) window.scrollTo({ top: t + scrollY - 110, behavior: reduce ? 'auto' : 'smooth' }); }
+      if (reduce) { d.open = want; done(); return; }
+      const from = anim ? body.getBoundingClientRect().height : (d.open ? body.scrollHeight : 0);
+      if (anim) { anim.onfinish = null; anim.cancel(); anim = null; }
+      if (want) d.open = true;
+      const to = want ? body.scrollHeight : 0;
       body.style.overflow = 'hidden';
-      anim = body.animate(closing
-        ? [{ height: h + 'px', opacity: 1 }, { height: '0px', opacity: 0 }]
-        : [{ height: '0px', opacity: 0 }, { height: h + 'px', opacity: 1 }],
-        { duration: Math.min(700, 320 + h * .25), easing: ease });
-      anim.onfinish = () => { anim = null; if (closing) d.open = false; body.style.overflow = ''; d.dispatchEvent(new Event('toggle')); };
-      anim.oncancel = () => { body.style.overflow = ''; };
+      anim = body.animate([{ height: from + 'px', opacity: want ? Math.min(1, from / 40) : 1 }, { height: to + 'px', opacity: want ? 1 : 0 }],
+        { duration: Math.round(Math.min(650, 280 + Math.abs(to - from) * .22)), easing: EASE });
+      const a = anim; (function tick(){ if (anim !== a) return; dispatchEvent(new Event('faqtick')); requestAnimationFrame(tick); })();
+      anim.onfinish = () => { anim = null; body.style.overflow = ''; if (!want) d.open = false; done(); };
     });
   });
 })();
@@ -1376,16 +1383,25 @@ function onRealResize(fn, wait = 150){
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
     const edge = Math.max(0, (W - 1200) / 2);
     const gL = edge > 44 ? edge / 2 : 9, gR = W - gL, cx = W / 2;
-    let d = `M ${cx} 0`;
+    // o caminho e a tabela comprimento → altura são calculados juntos, sem medir o SVG (leve o bastante para refazer a cada quadro)
+    let d = `M ${cx} 0`, px = cx, py = 0, len = 0;
+    LUT = [[0, 0, cx]];
+    const seg = (x, y) => { len += Math.hypot(x - px, y - py); px = x; py = y; LUT.push([len, y, x]); };
+    const line = (x, y) => { d += ` L ${x} ${y}`; seg(x, y); };
+    const cubic = (x1, y1, x2, y2, x, y) => {
+      d += ` C ${x1} ${y1}, ${x2} ${y2}, ${x} ${y}`;
+      const x0 = px, y0 = py;
+      for (let k = 1; k <= 24; k++) { const t = k / 24, u = 1 - t;
+        seg(u * u * u * x0 + 3 * u * u * t * x1 + 3 * u * t * t * x2 + t * t * t * x, u * u * u * y0 + 3 * u * u * t * y1 + 3 * u * t * t * y2 + t * t * t * y); }
+    };
     $$('[data-trail]', host).forEach((s, i) => {
       const to = s.dataset.trailTo && $(s.dataset.trailTo), top = s.offsetTop, bot = to ? to.offsetTop + to.offsetHeight : top + s.offsetHeight;
       const pad = Math.min(110, (bot - top) * .12), x = i % 2 === 0 ? gR : gL;
-      d += ` L ${cx} ${top} C ${cx} ${top + pad * .65}, ${x} ${top + pad * .35}, ${x} ${top + pad} L ${x} ${bot - pad} C ${x} ${bot - pad * .35}, ${cx} ${bot - pad * .65}, ${cx} ${bot}`;
+      line(cx, top); cubic(cx, top + pad * .65, x, top + pad * .35, x, top + pad);
+      line(x, bot - pad); cubic(x, bot - pad * .35, cx, bot - pad * .65, cx, bot);
     });
     path.setAttribute('d', d);
-    L = path.getTotalLength(); path.style.strokeDasharray = L;
-    // tabela comprimento → altura: o ponto acompanha a altura da tela, não a fração do comprimento
-    LUT = []; for (let l = 0; l <= L; l += 8) { const q = path.getPointAtLength(l); LUT.push([l, q.y, q.x]); } { const q = path.getPointAtLength(L); LUT.push([L, q.y, q.x]); }
+    L = len; path.setAttribute('pathLength', L.toFixed(1)); path.style.strokeDasharray = L;
     update();
   }
   function update(){
@@ -1408,7 +1424,8 @@ function onRealResize(fn, wait = 150){
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; update(); }); }, { passive: true });
   onRealResize(build);
   // o conteúdo muda de altura (dúvidas frequentes abertas/fechadas): refaz o caminho
-  $$('#journey details').forEach(d => d.addEventListener('toggle', () => requestAnimationFrame(build)));
+  addEventListener('faqdone', build);
+  addEventListener('faqtick', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; build(); }); });
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(build);
   addEventListener('load', build); build();
 })();
@@ -1502,7 +1519,7 @@ function onRealResize(fn, wait = 150){
     topbar.classList.toggle('solid', hb < 80);
     const r = offer.getBoundingClientRect(), f = fin.getBoundingClientRect();
     const q = rt.getBoundingClientRect();
-    mob.classList.toggle('show', hb < innerHeight * .5 && !(r.top < innerHeight && r.bottom > 0) && !(f.top < innerHeight - 80) && !(q.top < innerHeight * .4 && q.bottom > innerHeight * .6));
+    mob.classList.toggle('show', hb < innerHeight * .5 && !(r.top < innerHeight) && !(q.top < innerHeight * .4 && q.bottom > innerHeight * .6));
   }
   addEventListener('scroll', upd, { passive: true }); upd();
 })();
